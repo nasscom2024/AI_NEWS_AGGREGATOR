@@ -1,7 +1,8 @@
-# fetcher.py
-
+fetcher.py
+```python
 import feedparser
 from config import RSS_FEEDS
+
 
 def fetch_articles():
     """
