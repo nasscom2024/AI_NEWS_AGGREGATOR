@@ -1,7 +1,8 @@
 # classifier.py
-
+```python
 from transformers import pipeline
 from config import TOPIC_LABELS, THRESHOLD
+
 
 def classify_articles(articles):
     """
