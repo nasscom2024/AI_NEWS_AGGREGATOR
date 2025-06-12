@@ -1,17 +1,17 @@
-fetcher.py
-```python
+# fetcher.py
+
+from typing import List, Dict
 import feedparser
-from config import RSS_FEEDS
+from config import settings
 
+def fetch_articles() -> List[Dict[str, str]]:
+   
+    articles: List[Dict[str, str]] = []
 
-def fetch_articles():
-    """
-    Parse all RSS feeds and return a list of articles.
-    Each article is a dict with: title, link, summary, published.
-    """
-    articles = []
-    for url in RSS_FEEDS:
+    for url in settings.rss_feeds:
+        # Parse the RSS/Atom feed at this URL
         feed = feedparser.parse(url)
+
         for entry in feed.entries:
             articles.append({
                 "title":     entry.get("title", "No title"),
@@ -19,4 +19,5 @@ def fetch_articles():
                 "summary":   entry.get("summary", ""),
                 "published": entry.get("published", ""),
             })
+
     return articles
